@@ -1,14 +1,14 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
 import MediaBar from "./components/MediaBar";
+import MainPage from "./components/MainPage";
 import { MusicFooter } from "./components/MusicFooter";
-import { NovitaSection } from "./components/NovitàSection";
 
 const App = () => (
-  <>
+  <Container fluid className="p-0 bg-dark text-light min-vh-100">
     <MediaBar />
-    <NovitaSection />
-    <MusicFooter />;
-  </>
+    <MainPage />
+    <MusicFooter />
+  </Container>
 );
 
 export default App;
