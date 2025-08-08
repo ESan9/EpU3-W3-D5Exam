@@ -1,0 +1,19 @@
+In questo progetto finale ti viene richiesto di creare un'applicazione React, replicando quanto più fedelmente possibile i mockup forniti in modo da costruire una pagina responsive e accessibile da dispositivi di qualsiasi taglia. Ti consigliamo di utilizzare Bootstrap o un framework CSS a tua scelta in modo da velocizzare la creazione del layout.
+
+La pagina dovrà essere ricreata nelle sue parti statiche (ti verranno forniti gli assets necessari) e incorporare una sezione centrale dinamica, con contenuti recuperati da una chiamata API (l'endpoint è quello di Deezer che hai già utilizzato in passato).
+
+Come EXTRA puoi incorporare nel progetto anche una delle tecnologie studiate durante questa settimana: Redux, per salvare alcune informazioni a livello globale nell'applicativo, o in alternativa puoi scrivere il progetto in TypeScript.
+
+💬Steps:
+
+Crea un nuovo progetto tramite Vite.Installa il framework CSS che preferisci ed eventuali pacchetti extra se lo desideri (l'app possiederà solamente la schermata principale, react-router-dom non sarà necessario).Ricrea la schermata di Apple Music utilizzando una struttura a righe e colonne, integrando gli assets forniti. Ti consigliamo come sempre di partire dalla versione mobile. Non cercare subito la perfezione, ma cerca all'inizio di imbastire l'impaginazione in modo sommario in modo da riuscire ad ospitare le varie sezioni.Cerca di creare componenti riutilizzabili, in modo da scrivere una volta sola le card musicali, le sezioni, le voci del menu, etc.Utilizza le API di Deezer per ottenere dei contenuti a tua scelta e ricreare la sezione "Nuove uscite".[EXTRA] Implementa Redux come visto a lezione per creare uno store a livello applicativo. Lo puoi utilizzare per salvare informazioni come i brani preferiti, o per popolare la sezione del player con le informazioni della traccia appena cliccata.[EXTRA] In alternativa, se la ritieni una sfida alla tua portata, puoi valutare di scrivere l'intera applicazione utilizzando TypeScript.
+
+🔍 Deezer API
+
+Endpoint: /search
+
+Parametro: q
+
+Endpoint: https://striveschool-api.herokuapp.com/api/deezer/search?q=la-tua-ricerca
+
+Example: https://striveschool-api.herokuapp.com/api/deezer/search?q=queen
