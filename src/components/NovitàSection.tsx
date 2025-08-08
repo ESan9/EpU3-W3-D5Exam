@@ -12,6 +12,15 @@ import img2f from "../assets/images/2f.png";
 export const NovitaSection = () => {
   const thumbs = [img2a, img2b, img2c, img2d, img2e, img2f];
 
+  const titles = [
+    "Prólogo con Abuelo",
+    "The Wanderer",
+    "Michael Bublé & Carly Pearce",
+    "Stephan Moccio",
+    "Chart Spotlight",
+    "Altro episodio",
+  ];
+
   return (
     <section className="py-4" style={{ background: "#121212", color: "#fff" }}>
       <Container>
@@ -53,10 +62,11 @@ export const NovitaSection = () => {
         <h5 className="mb-3">Nuovi episodi radio</h5>
         <Row className="g-3">
           {thumbs.map((src, i) => (
-            <Col key={i} xs={6} md={2}>
+            <Col key={i} xs={6} md={2} className="text-white">
               <Card className="bg-dark text-white border-0">
-                <Card.Img src={src} alt={`episodio ${i + 1}`} />
+                <Card.Img src={src} alt={titles[i]} />
               </Card>
+              <p className="mt-2 mb-0">{titles[i]}</p>
             </Col>
           ))}
         </Row>
