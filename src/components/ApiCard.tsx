@@ -1,26 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Row, Col, Card, Spinner, Alert, Badge, Ratio } from "react-bootstrap";
-
-export type DeezerTrack = {
-  id: number;
-  title: string;
-  artist: {
-    id?: number;
-    name: string;
-  };
-  album: {
-    id?: number;
-    title?: string;
-    cover?: string;
-    cover_medium?: string;
-  };
-};
-
-export interface ApiCardProps {
-  query?: string;
-  limit?: number;
-  compact?: boolean;
-}
+import { ApiCardProps, DeezerTrack } from "../types/ApiCard";
+import { BsChevronRight } from "react-icons/bs";
 
 const ApiCard = ({
   query = "T.S.O.L.",
@@ -31,46 +12,59 @@ const ApiCard = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const endpoint = useMemo(
-    () =>
-      `https://striveschool-api.herokuapp.com/api/deezer/search?q=${encodeURIComponent(
-        query
-      )}`,
-    [query]
-  );
-
   useEffect(() => {
+    if (!query.trim()) {
+      setTracks([]);
+      return;
+    }
+
     const controller = new AbortController();
+
     (async () => {
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch(endpoint, { signal: controller.signal });
-        if (!res.ok)
+
+        const res = await fetch(
+          `https://striveschool-api.herokuapp.com/api/deezer/search?q=${encodeURIComponent(
+            query
+          )}`,
+          { signal: controller.signal }
+        );
+
+        if (!res.ok) {
           throw new Error(`Fetch failed: ${res.status} ${res.statusText}`);
+        }
+
         const json = await res.json();
         const data: DeezerTrack[] = Array.isArray(json?.data) ? json.data : [];
         setTracks(data);
       } catch (err) {
-        if (err instanceof Error) {
-          if (err.name !== "AbortError")
-            setError(err.message || "Errore sconosciuto");
-        } else {
+        if (err instanceof Error && err.name !== "AbortError") {
+          setError(err.message || "Errore sconosciuto");
+        } else if (!(err instanceof Error)) {
           setError("Errore sconosciuto");
         }
       } finally {
         setLoading(false);
       }
     })();
-    return () => controller.abort();
-  }, [endpoint]);
 
-  const items = useMemo(() => tracks.slice(0, limit), [tracks, limit]);
+    return () => controller.abort();
+  }, [query]);
+
+  const items = tracks.slice(0, limit);
 
   return (
     <>
       <div className="d-flex align-items-center justify-content-between mb-3">
-        <h2 className="h4 mb-0 text-light">Nuove uscite · {query}</h2>
+        <h2 className="h4 mb-0 text-light">
+          Nuove uscite · {query}{" "}
+          <span className="fw-bold" aria-hidden>
+            <BsChevronRight size={16} />
+          </span>
+        </h2>
+
         <Badge bg="dark" pill>
           {items.length}
         </Badge>

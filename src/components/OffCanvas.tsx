@@ -6,11 +6,7 @@ import {
   BsStars,
   BsBroadcast,
 } from "react-icons/bs";
-
-export interface OffCanvasProps {
-  show: boolean;
-  onHide: () => void;
-}
+import { OffCanvasProps } from "../types/OffCanvas";
 
 const OffCanvas = ({ show, onHide }: OffCanvasProps) => {
   return (
@@ -33,13 +29,13 @@ const OffCanvas = ({ show, onHide }: OffCanvasProps) => {
       <Offcanvas.Body>
         <Form className="mb-3">
           <InputGroup size="sm">
-            <InputGroup.Text className="bg-transparent text-secondary border-secondary">
+            <InputGroup.Text className="bg-transparent text-danger border-secondary">
               <BsSearch />
             </InputGroup.Text>
             <Form.Control
               placeholder="Cerca"
               aria-label="Cerca"
-              className="bg-transparent text-light border-secondary"
+              className="bg-transparent border-secondary"
             />
           </InputGroup>
         </Form>

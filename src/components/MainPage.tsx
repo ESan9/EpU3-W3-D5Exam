@@ -1,6 +1,7 @@
 import { Container } from "react-bootstrap";
 import ApiCard from "./ApiCard";
 import NovitaSection from "./NovitàSection";
+import LastMainPagePart from "./LastMainPagePart";
 
 const MainPage = () => {
   return (
@@ -8,6 +9,7 @@ const MainPage = () => {
       <Container className="bg-dark">
         <NovitaSection />
         <ApiCard />
+        <LastMainPagePart />
       </Container>
     </>
   );

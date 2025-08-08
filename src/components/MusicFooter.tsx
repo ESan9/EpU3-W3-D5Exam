@@ -1,12 +1,6 @@
-import { type CSSProperties } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-export interface MusicFooterProps {
-  className?: string;
-  style?: CSSProperties;
-}
-
-export const MusicFooter = ({ className = "", style }: MusicFooterProps) => {
+export const MusicFooter = ({ className = "" }) => {
   const links = [
     "Condizioni dei servizi internet",
     "Apple Music e privacy",
@@ -19,11 +13,9 @@ export const MusicFooter = ({ className = "", style }: MusicFooterProps) => {
     <footer
       className={`w-100 px-3 py-3 ${className}`}
       style={{
-        background: "#1f1f1f",
+        backgroundColor: "#353535ff",
         color: "#aaa",
         fontSize: "0.85rem",
-        borderTop: "1px solid rgba(255,255,255,.06)",
-        ...style,
       }}
     >
       <Container>
