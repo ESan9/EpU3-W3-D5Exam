@@ -1,15 +1,6 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { HomePage } from "./components/HomePage";
-import { ArticleDetail } from "./components/ArticleDetailPage";
+import MediaBar from "./components/MediaBar";
 
-const App = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/article/:id" element={<ArticleDetail />} />
-    </Routes>
-  </Router>
-);
+const App = () => <MediaBar />;
 
 export default App;
